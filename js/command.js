@@ -14,7 +14,7 @@ function articleCount() {
     if (total > 0) {
       element = document.getElementById("notification");
       element.textContent = total;
-      element.setAttribute("class", "display text-danger text-center");
+      element.setAttribute("class", "badge rounded-pill bg-danger");
     }
     else {
       element = document.getElementById("notification");
@@ -56,12 +56,12 @@ for(a=0; a<nombreDeDArticle; a++){
     <tr>
     <th scope="row">${a+1}</th>
     <td>${nom}</td>
-    <td><i class="me-2 bi bi-dash-square" onclick="lessItems('${article}')"></i>
+    <td><i class="me-2 bi bi-dash-square pointer" onclick="lessItems('${article}')"></i>
         ${quantite}
-        <i class="ms-2 bi bi-plus-square" onclick="moreItems('${article}')"></i>
+        <i class="ms-2 bi bi-plus-square pointer" onclick="moreItems('${article}')"></i>
     </td>
     <td>${prixtotalarticle} €</td>
-    <td><i class="bi bi-trash text-danger" onclick="deleteItem('${article}')"></i>
+    <td><i class="bi bi-trash text-danger fs-4 pointer" onclick="deleteItem('${article}')"></i>
     </td>
     </tr>`
     document.querySelector("#table"+a).innerHTML = line;
@@ -111,3 +111,31 @@ function deleteItem(id) {
     localStorage.removeItem(id);
     location.reload();
 }
+
+
+function post()
+{
+  fetch("http://localhost:3000/api/cameras/order", {
+    method: "POST",
+
+  })
+  .then
+    (function(res)
+      {
+        if (res.ok)
+          {
+            return res.json();
+          }
+      }
+    )
+  .catch
+    (function(err)
+      {
+        console.log('erreur')
+      }
+    )
+  .then
+    ( console.log('posting')
+    )
+  
+  }

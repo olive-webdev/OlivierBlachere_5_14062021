@@ -25,7 +25,7 @@ function addToCart(id) {
     if (total > 0) {
       element = document.getElementById("notification");
       element.textContent = total;
-      element.setAttribute("class", "display text-danger text-center");
+      element.setAttribute("class", "badge rounded-pill bg-danger");
     }
     else {
       element = document.getElementById("notification");

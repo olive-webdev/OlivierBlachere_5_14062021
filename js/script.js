@@ -15,7 +15,7 @@ function articleCount() {
   if (total > 0) {
     element = document.getElementById("notification");
     element.textContent = total;
-    element.setAttribute("class", "display text-danger text-center");
+    element.setAttribute("class", "badge rounded-pill bg-danger");
   }
   else {
     element = document.getElementById("notification");
@@ -84,7 +84,7 @@ fetch("http://localhost:3000/api/cameras")
 
 
               card(element[0], id[1]+i);
-              camera.setAttribute("class", "list-box w-100")
+              camera.setAttribute("class", "list-box w-100 border")
               camera.setAttribute("id", "list-box"+i);
 
               card(element[1], id[2]+i);
@@ -93,7 +93,7 @@ fetch("http://localhost:3000/api/cameras")
 
               card(element[2], id[3]+i);
               camera.setAttribute("src", cameras[i].imageUrl);
-              camera.setAttribute("class", "w-100");
+              camera.setAttribute("class", "w-100 mb-2");
 
               card(element[3], id[2]+i);
               camera.textContent = cameras[i].name;
