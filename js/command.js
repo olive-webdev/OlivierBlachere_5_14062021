@@ -119,16 +119,12 @@ function deleteItem(id) {
 
 let contact = {
   firstName: "prénom",
-  lastname: "nom",
+  lastName: "nom",
   address: "12 rue string",
   city: "paris",
   email: "email@email.com",
 };
-// contact = JSON.stringify(contact)
-console.log(JSON.stringify(contact));
 let products = ["5be9c4c71c9d440000a730e9"];
-// products = JSON.stringify(products)
-console.log(JSON.stringify(products))
 
 function postcart()
 {
