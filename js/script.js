@@ -8,6 +8,9 @@ function paramUrl (id)
     detailUrlParameter.push(detailUrl);
   };
 //---------------------------------------------------------------------------
+const loader = document.querySelector('#loader');
+
+window.addEventListener('load', () => {
 
 
 fetch("http://localhost:3000/api/cameras")
@@ -26,8 +29,11 @@ fetch("http://localhost:3000/api/cameras")
         cameraContainer = document.createElement("h3");
           h2 = document.getElementById('cameraContainer');
           h2.appendChild(cameraContainer);
-          cameraContainer.innerHTML ='Erreur de connexion <i class="bi bi-exclamation-square"></i>'
-          cameraContainer.setAttribute("class", "text-center badge fs-3 bg-warning text-wrap p-4")
+          cameraContainer.innerHTML ='Erreur de connexion <i class="bi bi-exclamation-square"></i>';
+          cameraContainer.setAttribute("class", "text-center badge fs-3 bg-warning text-wrap p-4");
+          
+
+
       }
     )
   .then
@@ -102,8 +108,12 @@ fetch("http://localhost:3000/api/cameras")
               camera.setAttribute("class", "btn btn-primary w-100");
               camera.setAttribute("href", detailUrlParameter[i]);
               camera.innerHTML = 'Plus de détails <i class="bi bi-plus-square"></i>';
+              loader.className += ' none';
             }
+            
         }
     )
 
 
+  } 
+  )
