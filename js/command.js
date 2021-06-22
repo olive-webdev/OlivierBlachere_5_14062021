@@ -86,12 +86,16 @@ function lessItems(id) {
     nombre = (localStorage.getItem(id)).split(',');
 
     quantite = (nombre[2]);
+    if(quantite>1){
 
+    
     quantite --;
 
     let article = [nombre[0], nombre[1], quantite]
     localStorage.setItem(id, article)
     location.reload();
+  }
+  else {}
 }
 
 function moreItems(id) {
@@ -113,29 +117,44 @@ function deleteItem(id) {
 }
 
 
-function post()
+let contact = {
+  firstName: "firstname",
+  lastname: "lastname",
+  address: "12 rue string",
+  city: "paris",
+  email: "email@email.com",
+};
+console.log(JSON.stringify(contact));
+let products = ["5be9c4c71c9d440000a730e9"];
+console.log(JSON.stringify(products))
+
+function postcart()
 {
-  fetch("http://localhost:3000/api/cameras/order", {
+  fetch("http://localhost:3000/api/cameras/order",
+  {
     method: "POST",
 
-  })
-  .then
-    (function(res)
-      {
-        if (res.ok)
-          {
-            return res.json();
-          }
-      }
-    )
-  .catch
-    (function(err)
-      {
-        console.log('erreur')
-      }
-    )
-  .then
-    ( console.log('posting')
-    )
-  
+    headers:
+      { 
+      'Accept': 'application/json', 
+      'Content-Type': 'application/json' 
+      },
+      
+    body: JSON.stringify
+      (
+        contact:{
+          firstName: "firstname",
+          lastname: "lastname",
+          address: "12 rue string",
+          city: "paris",
+          email: "email@email.com",
+        },
+        products:["5be9c4c71c9d440000a730e9"]
+
+      )
   }
+  )
+  .then(res => res.json())
+  .then(res => console.log(res))
+}
+
