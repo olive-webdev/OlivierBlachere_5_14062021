@@ -1,38 +1,10 @@
-// importing modules
-function articleCount() {
-  nombreId = localStorage.length;
-  console.log("nombre d'ID " + nombreId)
-  let total = 0;
-  for (a = 0; a < nombreId; a++) {
-    nomId = localStorage.key(a);
-    console.log("affiche le numero ID " + nomId)
-    nombresArticleDansNomId = (localStorage.getItem(nomId)).split(',');
-    nombresArticleDansNomId = Number(nombresArticleDansNomId[2]);
-    console.log("nombre d'article " + nombresArticleDansNomId)
-    total = total + nombresArticleDansNomId;
-    console.log("affiche le total " + total)
-  }
-  if (total > 0) {
-    element = document.getElementById("notification");
-    element.textContent = total;
-    element.setAttribute("class", "badge rounded-pill bg-danger");
-  }
-  else {
-    element = document.getElementById("notification");
-    element.setAttribute("class", "none");
-  }
-}
-
-articleCount()
 
 // creating dynamic links for each cameras
 let detailUrlParameter =[];
-function paramUrl (id, name, price)
+function paramUrl (id)
   {
     detailUrl = new URL('/pages/detail.html', "http://127.0.0.1:5500/");
     detailUrl.searchParams.append("id", id);
-    detailUrl.searchParams.append("name", name);
-    detailUrl.searchParams.append("price", price);
     detailUrlParameter.push(detailUrl);
   };
 //---------------------------------------------------------------------------
@@ -64,7 +36,7 @@ fetch("http://localhost:3000/api/cameras")
         {
           for (let i=0; i<cameras.length; ++i)
             { 
-              paramUrl(cameras[i]._id, cameras[i].name, cameras[i].price);
+              paramUrl(cameras[i]._id);
               // ---------------------------------------------------------------
               // creating HTML element
               element = ['div', 'a', 'img', 'h2', 'p', 'span']

@@ -1,28 +1,10 @@
-// =============================================================================
-// afficher notif panier
-// =============================================================================
-
-function articleCount() {
-    nombreId = localStorage.length;
-    let total = 0;
-    for (a = 0; a < nombreId; a++) {
-      nomId = localStorage.key(a);
-      nombresArticleDansNomId = (localStorage.getItem(nomId)).split(',');
-      nombresArticleDansNomId = Number(nombresArticleDansNomId[2]);
-      total = total + nombresArticleDansNomId;
-    }
-    if (total > 0) {
-      element = document.getElementById("notification");
-      element.textContent = total;
-      element.setAttribute("class", "badge rounded-pill bg-danger");
-    }
-    else {
-      element = document.getElementById("notification");
-      element.setAttribute("class", "none");
-    }
-  }
-  
-  articleCount()
+// creating dynamic links for each cameras
+function paramUrl (id)
+  {
+    detailUrl = new URL('/pages/detail.html', "http://127.0.0.1:5500/");
+    detailUrl.searchParams.append("id", id);
+  };
+//----
 
 
 // =============================================================================
@@ -36,7 +18,7 @@ nombreDeDArticle = localStorage.length;
 // -----------------------------------------------------------------------------
 for(a=0; a<nombreDeDArticle; a++){
     article = localStorage.key(a);
-    console.log(article)
+    console.log(article);
     detailArticle = (localStorage.getItem(article)).split(',');
     nom = (detailArticle[0]);
     quantite = (detailArticle[2]);
@@ -47,6 +29,8 @@ for(a=0; a<nombreDeDArticle; a++){
     prixtotalarticle = Number(prixtotalarticle);
     prixTotalCommande = prixTotalCommande + prixtotalarticle;
 
+    paramUrl(article);
+
     table = document.createElement("tr");
     tr = document.getElementById("table");
     tr.appendChild(table);
@@ -55,7 +39,7 @@ for(a=0; a<nombreDeDArticle; a++){
     const line = `
     <tr>
     <th scope="row">${a+1}</th>
-    <td>${nom}</td>
+    <td><a href="${detailUrl}">${nom}</a></td>
     <td><i class="me-2 bi bi-dash-square pointer" onclick="lessItems('${article}')"></i>
         ${quantite}
         <i class="ms-2 bi bi-plus-square pointer" onclick="moreItems('${article}')"></i>

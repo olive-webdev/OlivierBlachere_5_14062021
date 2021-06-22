@@ -1,56 +1,13 @@
 // get url parameter ?id=
 let param = new URLSearchParams(window.location.search);
 let id = param.get("id");
-let cameraName = param.get("name");
-let price = param.get("price");
-// let article = [cameraName,price,count];
-// console.log(article)
 
-function addToCart(id) {
-  if (localStorage.getItem(id) != null) {
-    let idString = (localStorage.getItem(id)).split(',');
-    let count = (idString[2])
-    count = Number(count) +1;
-    let article = [cameraName, price, count]
-    localStorage.setItem(id, article)
-  }
-  else {
-    let count = 1;
-    let article = [cameraName,price,count];
-    localStorage.setItem(id, article);
-  }
-  articleCount();
-}
 
-function articleCount() {
-  nombreId = localStorage.length;
-  console.log("nombre d'ID " + nombreId)
-  let total = 0;
-  for (a = 0; a < nombreId; a++) {
-    nomId = localStorage.key(a);
-    console.log("affiche le numero ID " + nomId)
-    nombresArticleDansNomId = (localStorage.getItem(nomId)).split(',');
-    nombresArticleDansNomId = Number(nombresArticleDansNomId[2]);
-    console.log("nombre d'article " + nombresArticleDansNomId)
-    total = total + nombresArticleDansNomId;
-    console.log("affiche le total " + total)
-  }
-  if (total > 0) {
-    element = document.getElementById("notification");
-    element.textContent = total;
-    element.setAttribute("class", "badge rounded-pill bg-danger");
-  }
-  else {
-    element = document.getElementById("notification");
-    element.setAttribute("class", "none");
-  }
-}
+fetch("http://localhost:3000/api/cameras/" + id)
 
-articleCount()
-
-fetch("http://localhost:3000/api/cameras")
   .then(function (res) {
     if (res.ok) {
+      console.log(res)
       return res.json();
     }
   })
@@ -68,20 +25,17 @@ fetch("http://localhost:3000/api/cameras")
   })
 
   .then(function camerasLoading(cameras) {
-    for (i = 0; i < cameras.length; i++) {
-      if (cameras[i]._id == id) {
+    
         img = document.getElementById("photo");
-        img.setAttribute("src", cameras[i].imageUrl);
+        img.setAttribute("src", cameras.imageUrl);
 
         title = document.getElementById("title");
-        title.textContent = cameras[i].name;
+        title.textContent = cameras.name;
 
         description = document.getElementById("description");
-        description.textContent = cameras[i].description;
+        description.textContent = cameras.description;
 
-
-
-        const lenses = cameras[i].lenses;
+        const lenses = cameras.lenses;
         const lensesNumber = lenses.length;
 
         lense = document.createElement("option");
@@ -103,12 +57,28 @@ fetch("http://localhost:3000/api/cameras")
 
 
         prices = document.getElementById("price");
-        let price = cameras[i].price / 100;
+        let price = cameras.price / 100;
         prices.textContent = price.toFixed(2) + "€";
-      } else {
-        console.log();
-      }
-    }
-  });
 
-document.getElementById('addToCart').onclick = function () { addToCart(id) };
+
+        document.getElementById('addToCart').onclick = function () { addToCart(id) };
+
+
+function addToCart(id) {
+  if (localStorage.getItem(id) != null) {
+    let idString = (localStorage.getItem(id)).split(',');
+    let count = (idString[2])
+    count = Number(count) +1;
+    let article = [cameras.name, cameras.price, count]
+    localStorage.setItem(id, article)
+  }
+  else {
+    let count = 1;
+    let article = [cameras.name,cameras.price,count];
+    localStorage.setItem(id, article);
+  }
+  articleCount();
+}
+      })
+;
+
