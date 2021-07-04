@@ -31,9 +31,7 @@ fetch("http://localhost:3000/api/cameras")
           h2.appendChild(cameraContainer);
           cameraContainer.innerHTML ='Erreur de connexion <i class="bi bi-exclamation-square"></i>';
           cameraContainer.setAttribute("class", "text-center badge fs-3 bg-warning text-wrap p-4");
-          
-
-
+          loader.className += ' none';
       }
     )
   .then
@@ -108,11 +106,12 @@ fetch("http://localhost:3000/api/cameras")
               camera.setAttribute("class", "btn btn-primary w-100");
               camera.setAttribute("href", detailUrlParameter[i]);
               camera.innerHTML = 'Plus de détails <i class="bi bi-plus-square"></i>';
-              loader.className += ' none';
+              loader.className += ' none'
             }
-            
+
         }
     )
+
 
 
   } 

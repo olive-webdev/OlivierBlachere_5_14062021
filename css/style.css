@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
   color: #444;
 }
+
 input:focus{
   border :1px solid #0d6efd!important;
   box-shadow: none!important;
@@ -95,4 +96,35 @@ section {
 .list .list-box:hover {
   transition: .3s ease-out;
   box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+
+
+#message{
+    height: 50vh;
+    margin-top: 20vh;
+}
+.iconLastNameOk, .iconFirstNameOK, .iconEmailOK, .iconAdresseOk, .iconAdressePlusOk, .iconCodePostalOk, .iconVilleOk{
+    display: block;
+    position: absolute;
+    top:2.7rem;
+    right: 1rem;
+    color: hsl(120, 100%, 34%);
+}
+.iconLastNameNotOk, .iconFirstNameNotOk, .iconEmailNotOk, .iconAdresseNotOk, .iconAdressePlusNotOk, .iconCodePostalNotOk, .iconVilleNotOk{
+    position: absolute;
+    top:2.7rem;
+    right: 1rem;
+    color: hsl(0, 100%, 34%);
+}
+
+
+.invalidname, .invalidname:focus{
+    border : 1px solid hsl(0, 100%, 34%)!important;
+}
+
+
+.validname, .validname:focus{
+    border : 1px solid hsl(120, 100%, 34%)!important;
 }

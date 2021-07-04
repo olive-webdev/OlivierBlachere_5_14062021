@@ -11,16 +11,12 @@ function addToCart(id) {
   
   function articleCount() {
     nombreId = localStorage.length;
-    console.log("nombre d'ID " + nombreId)
     let total = 0;
     for (a = 0; a < nombreId; a++) {
       nomId = localStorage.key(a);
-      console.log("affiche le numero ID " + nomId)
       nombresArticleDansNomId = (localStorage.getItem(nomId)).split(',');
       nombresArticleDansNomId = Number(nombresArticleDansNomId[2]);
-      console.log("nombre d'article " + nombresArticleDansNomId)
       total = total + nombresArticleDansNomId;
-      console.log("affiche le total " + total)
     }
     if (total > 0) {
       element = document.getElementById("notification");
