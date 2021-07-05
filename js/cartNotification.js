@@ -7,26 +7,26 @@ function addToCart(id) {
       localStorage.setItem(id, 1);
     }
     articleCount();
-  }
+}
   
-  function articleCount() {
+function articleCount() {
     nombreId = localStorage.length;
     let total = 0;
     for (a = 0; a < nombreId; a++) {
-      nomId = localStorage.key(a);
-      nombresArticleDansNomId = (localStorage.getItem(nomId)).split(',');
-      nombresArticleDansNomId = Number(nombresArticleDansNomId[2]);
-      total = total + nombresArticleDansNomId;
+        nomId = localStorage.key(a);
+        nombresArticleDansNomId = (localStorage.getItem(nomId)).split(',');
+        nombresArticleDansNomId = Number(nombresArticleDansNomId[2]);
+        total = total + nombresArticleDansNomId;
     }
     if (total > 0) {
-      element = document.getElementById("notification");
-      element.textContent = total;
-      element.setAttribute("class", "badge rounded-pill bg-danger");
+        element = document.getElementById("notification");
+        element.textContent = total;
+        element.setAttribute("class", "badge rounded-pill bg-danger position-absolute");
     }
     else {
-      element = document.getElementById("notification");
-      element.setAttribute("class", "none");
+        element = document.getElementById("notification");
+        element.setAttribute("class", "none");
     }
-  }
+}
   
-  articleCount()
+articleCount()

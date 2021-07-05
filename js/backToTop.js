@@ -1,6 +1,4 @@
-// =============================================================================
 // Back to top button
-// =============================================================================
 
 let mybutton = document.getElementById("bttb");
 
@@ -18,3 +16,4 @@ function scrollFunction() {
     mybutton.style.visibility = "hidden";
   }
 }
+
