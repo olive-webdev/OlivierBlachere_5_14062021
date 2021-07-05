@@ -97,14 +97,14 @@ function validForm() {
         document.getElementById('nom').classList.add('validname');
         document.getElementById('nom').classList.remove('invalidname');
         document.getElementById('iconLastNameOk').classList.remove('none');
-        document.getElementById('iconLastNameOk').classList.add('iconLastNameOk');
+        document.getElementById('iconLastNameOk').classList.add('iconOk');
         document.getElementById('iconLastNameNotOk').classList.add('none');
     }
     if (!nom.match(validLastName)) {
         document.getElementById('nom').classList.add('invalidname');
         document.getElementById('nom').classList.remove('validname');
         document.getElementById('iconLastNameNotOk').classList.remove('none');
-        document.getElementById('iconLastNameNotOk').classList.add('iconLastNameNotOk');
+        document.getElementById('iconLastNameNotOk').classList.add('iconNotOk');
         document.getElementById('iconLastNameOk').classList.add('none');
     }
     if (nom == '') {
@@ -120,14 +120,14 @@ function validForm() {
         document.getElementById('prenom').classList.add('validname');
         document.getElementById('prenom').classList.remove('invalidname');
         document.getElementById('iconFirstNameOk').classList.remove('none');
-        document.getElementById('iconFirstNameOk').classList.add('iconFirstNameOk');
+        document.getElementById('iconFirstNameOk').classList.add('iconOk');
         document.getElementById('iconFirstNameNotOk').classList.add('none');
     }
     if (!prenom.match(validFirstName)) {
         document.getElementById('prenom').classList.add('invalidname');
         document.getElementById('prenom').classList.remove('validname');
         document.getElementById('iconFirstNameNotOk').classList.remove('none');
-        document.getElementById('iconFirstNameNotOk').classList.add('iconFirstNameNotOk');
+        document.getElementById('iconFirstNameNotOk').classList.add('iconNotOk');
         document.getElementById('iconFirstNameOk').classList.add('none');
     }
     if (prenom == '') {
@@ -143,14 +143,14 @@ function validForm() {
         document.getElementById('email').classList.add('validname');
         document.getElementById('email').classList.remove('invalidname');
         document.getElementById('iconEmailOk').classList.remove('none');
-        document.getElementById('iconEmailOk').classList.add('iconEmailOk');
+        document.getElementById('iconEmailOk').classList.add('iconOk');
         document.getElementById('iconEmailNotOk').classList.add('none');
     }
     if (!email.match(validEmail)) {
         document.getElementById('email').classList.add('invalidname');
         document.getElementById('email').classList.remove('validname');
         document.getElementById('iconEmailNotOk').classList.remove('none');
-        document.getElementById('iconEmailNotOk').classList.add('iconEmailNotOk');
+        document.getElementById('iconEmailNotOk').classList.add('iconNotOk');
         document.getElementById('iconEmailOk').classList.add('none');
     }
     if (email == '') {
@@ -166,14 +166,14 @@ function validForm() {
         document.getElementById('adresse').classList.add('validname');
         document.getElementById('adresse').classList.remove('invalidname');
         document.getElementById('iconAdresseOk').classList.remove('none');
-        document.getElementById('iconAdresseOk').classList.add('iconAdresseOk');
+        document.getElementById('iconAdresseOk').classList.add('iconOk');
         document.getElementById('iconAdresseNotOk').classList.add('none');
     }
     if (!adresse.match(validAdresse)) {
         document.getElementById('adresse').classList.add('invalidname');
         document.getElementById('adresse').classList.remove('validname');
         document.getElementById('iconAdresseNotOk').classList.remove('none');
-        document.getElementById('iconAdresseNotOk').classList.add('iconAdresseNotOk');
+        document.getElementById('iconAdresseNotOk').classList.add('iconNotOk');
         document.getElementById('iconAdresseOk').classList.add('none');
     }
     if (adresse == '') {
@@ -189,14 +189,14 @@ function validForm() {
         document.getElementById('adressePlus').classList.add('validname');
         document.getElementById('adressePlus').classList.remove('invalidname');
         document.getElementById('iconAdressePlusOk').classList.remove('none');
-        document.getElementById('iconAdressePlusOk').classList.add('iconAdressePlusOk');
+        document.getElementById('iconAdressePlusOk').classList.add('iconOk');
         document.getElementById('iconAdressePlusNotOk').classList.add('none');
     }
     if (!adressePlus.match(validAdressePlus)) {
         document.getElementById('adressePlus').classList.add('invalidname');
         document.getElementById('adressePlus').classList.remove('validname');
         document.getElementById('iconAdressePlusNotOk').classList.remove('none');
-        document.getElementById('iconAdressePlusNotOk').classList.add('iconAdressePlusNotOk');
+        document.getElementById('iconAdressePlusNotOk').classList.add('iconNotOk');
         document.getElementById('iconAdressePlusOk').classList.add('none');
     }
     if (adressePlus == '') {
@@ -212,7 +212,7 @@ function validForm() {
         document.getElementById('codePostal').classList.add('validname');
         document.getElementById('codePostal').classList.remove('invalidname');
         document.getElementById('iconCodePostalOk').classList.remove('none');
-        document.getElementById('iconCodePostalOk').classList.add('iconCodePostalOk');
+        document.getElementById('iconCodePostalOk').classList.add('iconOk');
         document.getElementById('iconCodePostalNotOk').classList.add('none');
 
     }
@@ -220,7 +220,7 @@ function validForm() {
         document.getElementById('codePostal').classList.add('invalidname');
         document.getElementById('codePostal').classList.remove('validname');
         document.getElementById('iconCodePostalNotOk').classList.remove('none');
-        document.getElementById('iconCodePostalNotOk').classList.add('iconCodePostalNotOk');
+        document.getElementById('iconCodePostalNotOk').classList.add('iconNotOk');
         document.getElementById('iconCodePostalOk').classList.add('none');
     }
     if (codePostal == '') {
@@ -236,14 +236,14 @@ function validForm() {
         document.getElementById('ville').classList.add('validname');
         document.getElementById('ville').classList.remove('invalidname');
         document.getElementById('iconVilleOk').classList.remove('none');
-        document.getElementById('iconVilleOk').classList.add('iconVilleOk');
+        document.getElementById('iconVilleOk').classList.add('iconOk');
         document.getElementById('iconVilleNotOk').classList.add('none');
     }
     if (!ville.match(validVille)) {
         document.getElementById('ville').classList.add('invalidname');
         document.getElementById('ville').classList.remove('validname');
         document.getElementById('iconVilleNotOk').classList.remove('none');
-        document.getElementById('iconVilleNotOk').classList.add('iconVilleNotOk');
+        document.getElementById('iconVilleNotOk').classList.add('iconNotOk');
         document.getElementById('iconVilleOk').classList.add('none');
     }
     if (ville == '') {

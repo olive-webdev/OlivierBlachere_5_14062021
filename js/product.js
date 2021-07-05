@@ -78,6 +78,8 @@ function addToCart(id) {
     localStorage.setItem(id, article);
   }
   articleCount();
+  let popadd = document.getElementById('popadd');
+  popadd.classList.remove('none');
 }
       })
 ;

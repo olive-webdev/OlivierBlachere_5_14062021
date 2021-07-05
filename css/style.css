@@ -78,11 +78,6 @@ section {
     height: 100%;
     overflow: scroll;
 }
-.list-box {
-  padding: 1rem;
-  background: #fff;
-  box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
-}
 
 .list-box img{
   aspect-ratio: 3 / 2;
@@ -101,7 +96,6 @@ section {
 
 
 #footer{
-    height: fit-content;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -111,26 +105,32 @@ section {
     height: 50vh;
     margin-top: 20vh;
 }
-.iconLastNameOk, .iconFirstNameOK, .iconEmailOK, .iconAdresseOk, .iconAdressePlusOk, .iconCodePostalOk, .iconVilleOk{
+.iconOk{
     display: block;
     position: absolute;
     top:2.7rem;
     right: 1rem;
     color: hsl(120, 100%, 34%);
 }
-.iconLastNameNotOk, .iconFirstNameNotOk, .iconEmailNotOk, .iconAdresseNotOk, .iconAdressePlusNotOk, .iconCodePostalNotOk, .iconVilleNotOk{
+.iconNotOk{
     position: absolute;
     top:2.7rem;
     right: 1rem;
     color: hsl(0, 100%, 34%);
 }
 
-
 .invalidname, .invalidname:focus{
     border : 1px solid hsl(0, 100%, 34%)!important;
 }
 
-
 .validname, .validname:focus{
     border : 1px solid hsl(120, 100%, 34%)!important;
+}
+
+.popadd{
+    z-index: 20;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
 }

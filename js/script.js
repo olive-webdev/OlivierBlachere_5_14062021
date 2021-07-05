@@ -57,7 +57,7 @@ fetch("http://localhost:3000/api/cameras")
 
 
                 card(element[0], id[1]+i);
-                camera.setAttribute("class", "list-box w-100 border")
+                camera.setAttribute("class", "list-box w-100 border p-3 bg-white")
                 camera.setAttribute("id", "list-box"+i);
 
                 card(element[1], id[2]+i);
