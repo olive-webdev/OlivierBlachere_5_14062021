@@ -1,14 +1,17 @@
+// Ajoute un article au clic "ajouter au panier" dans le local storage et renvoie vers articleCount()
 function addToCart(id) {
     if (localStorage.getItem(id) > 0) {
-      let store = Number(localStorage.getItem(id));
-      localStorage.setItem(id, store + 1)
+        let store = Number(localStorage.getItem(id));
+        localStorage.setItem(id, store + 1)
     }
     else {
-      localStorage.setItem(id, 1);
+        localStorage.setItem(id, 1);
     }
     articleCount();
 }
-  
+
+// Compte le nombre d'article dans le local storage et affiche le badge "nombre" vers l'icone du panier
+
 function articleCount() {
     nombreId = localStorage.length;
     let total = 0;
@@ -28,5 +31,5 @@ function articleCount() {
         element.setAttribute("class", "none");
     }
 }
-  
+
 articleCount()
