@@ -28,7 +28,7 @@ fetch("http://localhost:3000/api/cameras")
           h2 = document.getElementById('cameraContainer');
           h2.appendChild(cameraContainer);
           cameraContainer.innerHTML ='Erreur de connexion <i class="bi bi-exclamation-square"></i>';
-          cameraContainer.setAttribute("class", "text-center badge fs-3 bg-warning text-wrap p-4");
+          cameraContainer.setAttribute("class", "text-center badge fs-3 btn-danger text-wrap p-5 mt-5");
           loader.className += ' none';
       }
     )
@@ -38,7 +38,6 @@ fetch("http://localhost:3000/api/cameras")
         {
             for (let i=0; i<cameras.length; ++i){ 
                 paramUrl(cameras[i]._id);
-                // ---------------------------------------------------------------
                 // creating HTML element
                 element = ['div', 'a', 'img', 'h2', 'p', 'span']
                 id = ['cameraContainer', 'camera', 'list-box', 'link', 'card-body', ]

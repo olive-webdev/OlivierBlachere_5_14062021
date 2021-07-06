@@ -36,8 +36,8 @@
                 <a href="../index.html" class="logo"><img src="../img/logo.png" alt=""></a>
                 <nav id="navbar" class="navbar p-0">
                     <ul class="list-unstyled p-0 m-0 me-3 position-relative">
-                        <li><a class="text-decoration-none fs-4 text-primary">Panier <i class="bi bi-bag fs-2 mx-0"></i>
-                            </a>
+                        <li><span class="text-decoration-none fs-4 text-primary">Panier <i class="bi bi-bag fs-2 mx-0"></i>
+                        </span>
                             <span id="notification"></span>
                         </li>
                     </ul>
@@ -80,61 +80,53 @@
                         <th scope="col"></th>
                     </tfoot>
                 </table>
-                
-                <form id="validationForm" name="validation de commande" class="row g-3 mx-auto border p-3">
+               
+                <div id="validationForm" name="validation de commande"  class="row g-3 mx-auto border p-3">
 
                     <div class="col-md-4 position-relative">
                     <label for="nom" class="form-label">Nom</label>
                     <input type="text" class="form-control" id="nom" oninput="validForm()">
-                    <div id="iconLastNameOk" class="none iconLastNameOK"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconLastNameNotOk" class="none iconLastNameNotOk"><i class="bi bi-exclamation-circle"></i>
-                    </div>
+                    <div><i id="nomOk" class="none bi bi-check-circle"></i><i id="nomNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
 
                     <div class="col-md-4 position-relative">
                     <label for="prenom" class="form-label">Prénom</label>
                     <input type="text" class="form-control" id="prenom" oninput="validForm()">
-                    <div id="iconFirstNameOk" class="none iconFirstNameOK"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconFirstNameNotOk" class="none iconFirstNameNotOk"><i class="bi bi-exclamation-circle"></i>
-                    </div>
+                    <div><i id="prenomOk" class="none bi bi-check-circle"></i><i id="prenomNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
 
                     <div class="col-md-4 position-relative">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" oninput="validForm()">
-                    <div id="iconEmailOk" class="none iconEmailOK"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconEmailNotOk" class="none iconEmailNotOk"><i class="bi bi-exclamation-circle"></i>
-                    </div>
+                    <div><i id="emailOk" class="none bi bi-check-circle"></i><i id="emailNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
 
 
                     <div class="col-12 position-relative">
                     <label for="adresse" class="form-label">Adresse</label>
                     <input type="text" class="form-control" id="adresse" oninput="validForm()">
-                    <div id="iconAdresseOk" class="none iconAdresseOk"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconAdresseNotOk" class="none iconAdresseNotOk"><i class="bi bi-exclamation-circle"></i>
+                    <div><i id="adresseOk" class="none bi bi-check-circle"></i><i id="adresseNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
-                    </div>
+
+
                     <div class="col-12 position-relative">
                     <label for="adressePlus" class="form-label">Complément d'adresse</label>
                     <input type="text" class="form-control" id="adressePlus" oninput="validForm()">
-                    <div id="iconAdressePlusOk" class="none iconAdressePlusOk"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconAdressePlusNotOk" class="none iconAdressePlusNotOk"><i class="bi bi-exclamation-circle"></i>
+                    <div><i id="adressePlusOk" class="none bi bi-check-circle"></i><i id="adressePlusNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
-                    </div>
+
+
                     <div class="col-md-3 position-relative">
                     <label for="codePostal" class="form-label">Code postal</label>
                     <input type="text" class="form-control" id="codePostal" oninput="validForm()">
-                    <div id="iconCodePostalOk" class="none iconCodePostalOk"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconCodePostalNotOk" class="none iconCodePostalNotOk"><i class="bi bi-exclamation-circle"></i>
+                    <div><i id="codePostalOk" class="none bi bi-check-circle"></i><i id="codePostalNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
-                    </div>
+
+
                     <div class="col-md-5 position-relative">
                     <label for="ville" class="form-label">Ville</label>
                     <input type="text" class="form-control" id="ville" oninput="validForm()">
-                    <div id="iconVilleOk" class="none iconVilleOk"><i class="bi bi-check-circle"></i></div>
-                    <div id="iconVilleNotOk" class="none iconVilleNotOk"><i class="bi bi-exclamation-circle"></i>
-                    </div>
+                    <div><i id="villeOk" class="none bi bi-check-circle"></i><i id="villeNotOk" class="none bi bi-exclamation-circle"></i></div>
                     </div>
                     <div class="col-md-4 position-relative">
                     <label for="pays" class="form-label">Pays</label>
@@ -149,7 +141,8 @@
                     <button onclick="submitForm()" class="btn btn-primary text-uppercase w-100 py-3 my-5">Valider la commande</button>
                     </div>
                     
-                </form>
+                </div>
+                
             
             </div>
            
@@ -157,7 +150,7 @@
         </section>
 
         <footer id="footer" class="border-top bg-white">
-        <div class="container d-md-flex py-4">
+        <div class="container d-md-flex py-4 align-items-md-center">
             <div class="me-md-auto text-center text-secondary">
             &copy; Copyright <strong>Orinoco</strong>. All Rights Reserved
             </div>
@@ -175,6 +168,13 @@
             </div>
         </div>
         </footer>
+
+
+
+        <div id="popadd" class="popadd text-center bg-white p-2 rounded-3 none fs-5 border">
+            <i onclick="popadd.classList.add('none')" class="text-danger pointer bi bi-x-circle float-end" ></i>
+            <div class="m-4 text-danger">Veillez à remplir le formulaire correctement avant de valider la commande</div>
+        </div>
 
         <a href="#" id="bttb" class="btn btn-primary fs-1 py-0 px-2"><i class="bi
             bi-arrow-up-short"></i></a>

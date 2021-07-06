@@ -89,231 +89,120 @@ function deleteItem(id) {
 
 let formIsValid = false;
 
+if(nombreDeDArticle === 0){
+    console.log('zero article');
+    var d = document.getElementById("cameraContainer");
+    var d_nested = document.getElementById("validationForm");
+    var throwawayNode = d.removeChild(d_nested);
+}
+
+
+
+
+
+
 function validForm() {
 
-    const validLastName = /^[a-z ,.'-]+$/i;
-    const nom = document.getElementById('nom').value;
-    if (nom.match(validLastName)) {
-        document.getElementById('nom').classList.add('validname');
-        document.getElementById('nom').classList.remove('invalidname');
-        document.getElementById('iconLastNameOk').classList.remove('none');
-        document.getElementById('iconLastNameOk').classList.add('iconOk');
-        document.getElementById('iconLastNameNotOk').classList.add('none');
-    }
-    if (!nom.match(validLastName)) {
-        document.getElementById('nom').classList.add('invalidname');
-        document.getElementById('nom').classList.remove('validname');
-        document.getElementById('iconLastNameNotOk').classList.remove('none');
-        document.getElementById('iconLastNameNotOk').classList.add('iconNotOk');
-        document.getElementById('iconLastNameOk').classList.add('none');
-    }
-    if (nom == '') {
-        document.getElementById('nom').classList.remove('invalidname');
-        document.getElementById('nom').classList.remove('validname');
-        document.getElementById('iconLastNameOk').classList.add('none');
-        document.getElementById('iconLastNameNotOk').classList.add('none');
-    }
+id = ['nom','prenom', 'email', 'adresse', 'adressePlus', 'codePostal', 'ville'];
+idDomOk = ['nomOk', 'prenomOk', 'emailOk', 'adresseOk', 'adressePlusOk', 'codePostalOk', 'villeOk'];
+idDomNotOk = ['nomNotOk', 'prenomNotOk', 'emailNotOk', 'adresseNotOk', 'adressePlusNotOk', 'codePostalNotOk', 'villeNotOk']
 
-    const validFirstName = /^[a-z ,.'-]+$/i;
-    const prenom = document.getElementById('prenom').value;
-    if (prenom.match(validFirstName)) {
-        document.getElementById('prenom').classList.add('validname');
-        document.getElementById('prenom').classList.remove('invalidname');
-        document.getElementById('iconFirstNameOk').classList.remove('none');
-        document.getElementById('iconFirstNameOk').classList.add('iconOk');
-        document.getElementById('iconFirstNameNotOk').classList.add('none');
-    }
-    if (!prenom.match(validFirstName)) {
-        document.getElementById('prenom').classList.add('invalidname');
-        document.getElementById('prenom').classList.remove('validname');
-        document.getElementById('iconFirstNameNotOk').classList.remove('none');
-        document.getElementById('iconFirstNameNotOk').classList.add('iconNotOk');
-        document.getElementById('iconFirstNameOk').classList.add('none');
-    }
-    if (prenom == '') {
-        document.getElementById('prenom').classList.remove('invalidname');
-        document.getElementById('prenom').classList.remove('validname');
-        document.getElementById('iconFirstNameOk').classList.add('none');
-        document.getElementById('iconFirstNameNotOk').classList.add('none');
-    }
+let inputs = {
 
-    const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const email = document.getElementById('email').value;
-    if (email.match(validEmail)) {
-        document.getElementById('email').classList.add('validname');
-        document.getElementById('email').classList.remove('invalidname');
-        document.getElementById('iconEmailOk').classList.remove('none');
-        document.getElementById('iconEmailOk').classList.add('iconOk');
-        document.getElementById('iconEmailNotOk').classList.add('none');
-    }
-    if (!email.match(validEmail)) {
-        document.getElementById('email').classList.add('invalidname');
-        document.getElementById('email').classList.remove('validname');
-        document.getElementById('iconEmailNotOk').classList.remove('none');
-        document.getElementById('iconEmailNotOk').classList.add('iconNotOk');
-        document.getElementById('iconEmailOk').classList.add('none');
-    }
-    if (email == '') {
-        document.getElementById('email').classList.remove('invalidname');
-        document.getElementById('email').classList.remove('validname');
-        document.getElementById('iconEmailOk').classList.add('none');
-        document.getElementById('iconEmailNotOk').classList.add('none');
-    }
+    regex :[/^[a-z ,.'-]+$/i, /^[a-z ,.'-]+$/i, /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, /^[a-zA-Z0-9\s\,\''\-]*$/, /^[a-zA-Z0-9\s\,\''\-]*$/, /^(?:[0-8]\d|9[0-8])\d{3}$/, /^[a-z ,.'-]+$/i] ,
+    inputValue : document.getElementById(id[0]).value,
 
-    const validAdresse = /^[a-zA-Z0-9\s\,\''\-]*$/;
-    const adresse = document.getElementById('adresse').value;
-    if (adresse.match(validAdresse)) {
-        document.getElementById('adresse').classList.add('validname');
-        document.getElementById('adresse').classList.remove('invalidname');
-        document.getElementById('iconAdresseOk').classList.remove('none');
-        document.getElementById('iconAdresseOk').classList.add('iconOk');
-        document.getElementById('iconAdresseNotOk').classList.add('none');
+    valid : function (i){
+ 
+        if (document.getElementById(id[i]).value.match(this.regex[i])) {
+            document.getElementById(id[i]).classList.add('validname');
+            document.getElementById(id[i]).classList.remove('invalidname');
+            document.getElementById(idDomOk[i]).classList.remove('none');
+            document.getElementById(idDomOk[i]).classList.add('ok');
+            document.getElementById(idDomNotOk[i]).classList.add('none');
+            formIsValid = true;
+        }
+        if (!document.getElementById(id[i]).value.match(this.regex[i])) {
+            document.getElementById(id[i]).classList.add('invalidname');
+            document.getElementById(id[i]).classList.remove('validname');
+            document.getElementById(idDomNotOk[i]).classList.remove('none');
+            document.getElementById(idDomNotOk[i]).classList.add('notOk');
+            document.getElementById(idDomOk[i]).classList.add('none');
+            formIsValid = false;
+        }
+        if (document.getElementById(id[i]).value == '') {
+            document.getElementById(id[i]).classList.remove('invalidname');
+            document.getElementById(id[i]).classList.remove('validname');
+            document.getElementById(idDomOk[i]).classList.add('none');
+            document.getElementById(idDomNotOk[i]).classList.add('none');
+            formIsValid = false;
+        }
     }
-    if (!adresse.match(validAdresse)) {
-        document.getElementById('adresse').classList.add('invalidname');
-        document.getElementById('adresse').classList.remove('validname');
-        document.getElementById('iconAdresseNotOk').classList.remove('none');
-        document.getElementById('iconAdresseNotOk').classList.add('iconNotOk');
-        document.getElementById('iconAdresseOk').classList.add('none');
-    }
-    if (adresse == '') {
-        document.getElementById('adresse').classList.remove('invalidname');
-        document.getElementById('adresse').classList.remove('validname');
-        document.getElementById('iconAdresseOk').classList.add('none');
-        document.getElementById('iconAdresseNotOk').classList.add('none');
-    }
-
-    const validAdressePlus = /^[a-zA-Z0-9\s\,\''\-]*$/;
-    const adressePlus = document.getElementById('adressePlus').value;
-    if (adressePlus.match(validAdressePlus)) {
-        document.getElementById('adressePlus').classList.add('validname');
-        document.getElementById('adressePlus').classList.remove('invalidname');
-        document.getElementById('iconAdressePlusOk').classList.remove('none');
-        document.getElementById('iconAdressePlusOk').classList.add('iconOk');
-        document.getElementById('iconAdressePlusNotOk').classList.add('none');
-    }
-    if (!adressePlus.match(validAdressePlus)) {
-        document.getElementById('adressePlus').classList.add('invalidname');
-        document.getElementById('adressePlus').classList.remove('validname');
-        document.getElementById('iconAdressePlusNotOk').classList.remove('none');
-        document.getElementById('iconAdressePlusNotOk').classList.add('iconNotOk');
-        document.getElementById('iconAdressePlusOk').classList.add('none');
-    }
-    if (adressePlus == '') {
-        document.getElementById('adressePlus').classList.remove('invalidname');
-        document.getElementById('adressePlus').classList.remove('validname');
-        document.getElementById('iconAdressePlusOk').classList.add('none');
-        document.getElementById('iconAdressePlusNotOk').classList.add('none');
-    }
-
-    const validCodePostal = /^(?:[0-8]\d|9[0-8])\d{3}$/;
-    const codePostal = document.getElementById('codePostal').value;
-    if (codePostal.match(validCodePostal)) {
-        document.getElementById('codePostal').classList.add('validname');
-        document.getElementById('codePostal').classList.remove('invalidname');
-        document.getElementById('iconCodePostalOk').classList.remove('none');
-        document.getElementById('iconCodePostalOk').classList.add('iconOk');
-        document.getElementById('iconCodePostalNotOk').classList.add('none');
-
-    }
-    if (!codePostal.match(validCodePostal)) {
-        document.getElementById('codePostal').classList.add('invalidname');
-        document.getElementById('codePostal').classList.remove('validname');
-        document.getElementById('iconCodePostalNotOk').classList.remove('none');
-        document.getElementById('iconCodePostalNotOk').classList.add('iconNotOk');
-        document.getElementById('iconCodePostalOk').classList.add('none');
-    }
-    if (codePostal == '') {
-        document.getElementById('codePostal').classList.remove('invalidname');
-        document.getElementById('codePostal').classList.remove('validname');
-        document.getElementById('iconCodePostalOk').classList.add('none');
-        document.getElementById('iconCodePostalNotOk').classList.add('none');
-    }
-
-    const validVille = /^[a-z ,.'-]+$/i;
-    const ville = document.getElementById('ville').value;
-    if (ville.match(validVille)) {
-        document.getElementById('ville').classList.add('validname');
-        document.getElementById('ville').classList.remove('invalidname');
-        document.getElementById('iconVilleOk').classList.remove('none');
-        document.getElementById('iconVilleOk').classList.add('iconOk');
-        document.getElementById('iconVilleNotOk').classList.add('none');
-    }
-    if (!ville.match(validVille)) {
-        document.getElementById('ville').classList.add('invalidname');
-        document.getElementById('ville').classList.remove('validname');
-        document.getElementById('iconVilleNotOk').classList.remove('none');
-        document.getElementById('iconVilleNotOk').classList.add('iconNotOk');
-        document.getElementById('iconVilleOk').classList.add('none');
-    }
-    if (ville == '') {
-        document.getElementById('ville').classList.remove('invalidname');
-        document.getElementById('ville').classList.remove('validname');
-        document.getElementById('iconVilleOk').classList.add('none');
-        document.getElementById('iconVilleNotOk').classList.add('none');
-    }
-
-    if(nom.match(validLastName) && prenom.match(validFirstName) &&
-     email.match(validEmail) && adresse.match(validAdresse) &&
-     codePostal.match(validCodePostal) && ville.match(validVille)){
-        formIsValid = true;
-    }
+    
+};
+inputs.valid(0);
+inputs.valid(1);
+inputs.valid(2);
+inputs.valid(3);
+inputs.valid(4);
+inputs.valid(5);
+inputs.valid(6);
 }
 
 
 
 function submitForm() {
+    
     if(formIsValid === true){
 
-    let contact = {
-        firstName: document.getElementById('prenom').value,
-        lastName: document.getElementById('nom').value,
-        address: document.getElementById('adresse').value + ", " + document.getElementById('adressePlus').value + " " + document.getElementById('codePostal').value,
-        city: document.getElementById('ville').value,
-        email: document.getElementById('email').value,
-    };
-    console.log(contact);
+        let contact = {
+            firstName: document.getElementById('prenom').value,
+            lastName: document.getElementById('nom').value,
+            address: document.getElementById('adresse').value + ", " + document.getElementById('adressePlus').value + " " + document.getElementById('codePostal').value,
+            city: document.getElementById('ville').value,
+            email: document.getElementById('email').value,
+        };
 
-    let products = articles;
+        let products = articles;
 
-
-    fetch("http://localhost:3000/api/cameras/order",
-        {
-            method: "POST",
-
-            headers:
+        fetch("http://localhost:3000/api/cameras/order",
             {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+                method: "POST",
 
-            body: JSON.stringify
-                (
-                    {
-                        contact,
-                        products
-                    }
-                )
-        }
-    )
-        .then
-        (function (res) {
-            if (res.ok) {
-                return res.json();
+                headers:
+                {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify
+                    (
+                        {
+                            contact,
+                            products
+                        }
+                    )
             }
-        }
         )
-        .then(function (res) {
-            console.log(res.orderId);
-            let confirmUrl;
-            confirmUrl = new URL('/pages/confirm.html', "http://127.0.0.1:5500/");
-            confirmUrl.searchParams.append("idValidated", res.orderId);
-            window.location.href = confirmUrl;
-        });
-}
-else{
-    window.alert('Veuillez remplir le formulaire correctement, Merci.')
-}
-}
+            .then
+            (function (res) {
+                if (res.ok) {
+                    return res.json();
+                }
+            }
+            )
+            .then(function (res) {
+                let confirmUrl;
+                confirmUrl = new URL('/pages/confirm.html', "http://127.0.0.1:5500/");
+                confirmUrl.searchParams.append("idValidated", res.orderId);
+                window.location.href = confirmUrl;
+            });
+    }
+    else{
+        let popadd = document.getElementById('popadd');
+        popadd.classList.remove('none');
 
+        
 
+}
+}

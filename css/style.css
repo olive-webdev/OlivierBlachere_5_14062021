@@ -53,13 +53,15 @@ input:focus{
 #header .logo img {
   max-height: 30px;
 }
-
+#notification{
+    right: -.7rem;
+}
 .display{
   display: block;
 }
 .none{
   display: none!important;
-  z-index: -10;
+
 }
 
 section {
@@ -101,18 +103,14 @@ section {
     bottom: 0;
 }
 
-#message{
-    height: 50vh;
-    margin-top: 20vh;
-}
-.iconOk{
+.ok{
     display: block;
     position: absolute;
     top:2.7rem;
     right: 1rem;
     color: hsl(120, 100%, 34%);
 }
-.iconNotOk{
+.notOk{
     position: absolute;
     top:2.7rem;
     right: 1rem;
@@ -129,8 +127,10 @@ section {
 
 .popadd{
     z-index: 20;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);   
+    border : 1px solid hsl(0, 100%, 34%)!important;
+}
 }
