@@ -18,11 +18,11 @@ window.addEventListener('load', () => {
         }
     })
     .catch(function(err){
-        cameraContainer = document.createElement("h3");
+        cameraContainer = document.createElement("div");
         h2 = document.getElementById('cameraContainer');
         h2.appendChild(cameraContainer);
         cameraContainer.innerHTML ='Erreur de connexion <i class="bi bi-exclamation-square"></i>';
-        cameraContainer.setAttribute("class", "text-center badge fs-3 btn-danger text-wrap p-5 mt-5");
+        cameraContainer.setAttribute("class", "text-center badge fs-3 btn-danger text-wrap p-5 mt-5 position-fixed w-50 centeredfixed");
         loader.className += ' none';
     })
     .then(function camerasLoading (cameras){
@@ -30,7 +30,7 @@ window.addEventListener('load', () => {
             paramUrl(cameras[i]._id);
             // objets et fonction qui génère des éléments HTML
             element = ['div', 'a', 'img', 'h2', 'p', 'span']
-            id = ['cameraContainer', 'camera', 'list-box', 'link', 'card-body', ]
+            id = ['cameraContainer', 'camera', 'list-box', 'link', 'card-body' ]
             function card (element, id){
                 camera = document.createElement(element);
                 element = document.getElementById(id);

@@ -45,33 +45,35 @@ fetch("http://localhost:3000/api/cameras/" + id)
         prices = document.getElementById("price");
         let price = cameras.price / 100;
         prices.textContent = price.toFixed(2) + "€";
-        document.getElementById('addToCart').onclick = function () {addToCart(id)};
-});
+        document.getElementById('addToCart').onclick = function () { addToCart(id) };
+// Ajoute le produit au panier
 
-// Ajoute le prduit au panier
-
-function addToCart(id) {
-    if (localStorage.getItem(id) != null) {
-    let idString = (localStorage.getItem(id)).split(',');
-    let count = (idString[2])
-    count = Number(count) +1;
-    let article = [cameras.name, cameras.price, count]
-    localStorage.setItem(id, article)
+    function addToCart(id) {
+        if (localStorage.getItem(id) != null) {
+        let idString = (localStorage.getItem(id)).split(',');
+        let count = (idString[2])
+        count = Number(count) +1;
+        let article = [cameras.name, cameras.price, count]
+        localStorage.setItem(id, article)
+        }
+        else {
+        let count = 1;
+        let article = [cameras.name,cameras.price,count];
+        localStorage.setItem(id, article);
+        }
+        articleCount();
+        popUp();
     }
-    else {
-    let count = 1;
-    let article = [cameras.name,cameras.price,count];
-    localStorage.setItem(id, article);
-    }
-    articleCount();
-    popUp();
-}
 
 // Affiche un PopUp lors de l'ajout d'un produit au panier
 
-function popUp(){
-    let popadd = document.getElementById('popadd');
-    popadd.classList.remove('none');
-};
+    function popUp(){
+        let popadd = document.getElementById('popadd');
+        popadd.classList.remove('none');
+    };
+});
+
+
+
 
 

@@ -49,15 +49,12 @@ for (a = 0; a < nombreDeDArticle; a++) {
 
 // affiche le ligne footer du tableau avec le total
 
-const total =
-    `
-    <tfoot class="text-center">
+const total =`
     <th scope="col"></th>
     <th scope="col">Total</th>
     <th scope="col"></th>
     <th scope="col">${prixTotalCommande} €</th>
-    <th scope="col"></th>
-    `
+    <th scope="col"></th>`
 document.querySelector("#tfoot").innerHTML = total;
 
 // décrémente le nombre d'articles du panier
@@ -110,7 +107,13 @@ function validForm() {
     idDomNotOk = ['nomNotOk', 'prenomNotOk', 'emailNotOk', 'adresseNotOk', 'adressePlusNotOk', 'codePostalNotOk', 'villeNotOk']
 
     let inputs = {
-        regex :[/^[a-z ,.'-]+$/i, /^[a-z ,.'-]+$/i, /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, /^[a-zA-Z0-9\s\,\''\-]*$/, /^[a-zA-Z0-9\s\,\''\-]*$/, /^(?:[0-8]\d|9[0-8])\d{3}$/, /^[a-z ,.'-]+$/i] ,
+        regex :[/^[a-z ,.'-]+$/i,
+                /^[a-z ,.'-]+$/i,
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                /^[a-zA-Z0-9\s\,\''\-]*$/,
+                /^[a-zA-Z0-9\s\,\''\-]*$/,
+                /^(?:[0-8]\d|9[0-8])\d{3}$/,
+                /^[a-z ,.'-]+$/i] ,
         inputValue : document.getElementById(id[0]).value,
         valid : function (i){
             if (document.getElementById(id[i]).value.match(this.regex[i])) {
