@@ -48,6 +48,7 @@ window.addEventListener('load', () => {
             card(element[2], id[3]+i);
             camera.setAttribute("src", cameras[i].imageUrl);
             camera.setAttribute("class", "w-100 mb-2");
+            camera.setAttribute("alt", "un appareil photo "+cameras[i].name);
             card(element[3], id[2]+i);
             camera.textContent = cameras[i].name;
             card(element[4], id[2]+i);

@@ -50,9 +50,6 @@ input:focus{
   z-index: 3;
 }
 
-#header .logo img {
-  max-height: 30px;
-}
 #notification{
     right: -.7rem;
 }

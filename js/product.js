@@ -21,6 +21,7 @@ fetch("http://localhost:3000/api/cameras/" + id)
     .then(function camerasLoading(cameras) {
         img = document.getElementById("photo");
         img.setAttribute("src", cameras.imageUrl);
+        img.setAttribute("alt", "un appareil photo "+cameras.name);
         title = document.getElementById("title");
         title.textContent = cameras.name;
         description = document.getElementById("description");
