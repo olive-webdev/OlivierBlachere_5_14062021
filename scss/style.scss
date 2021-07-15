@@ -1,0 +1,131 @@
+@import "variables";
+@import "mixins";
+@import "animations";
+body {
+    font-family: "Roboto", sans-serif;
+    color: $font-color;
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3 {
+font-family: "Montserrat", sans-serif;
+}
+
+input:focus {
+border: 1px solid $input-borders!important;
+box-shadow: none !important;
+}
+
+.none {
+display: none !important;
+}
+
+.pointer {
+cursor: pointer;
+}
+
+.popadd {
+z-index: 20;
+position: fixed;
+}
+
+.centeredfixed {
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+/*Bouton pour revenir en haut de la page*/
+#bttb {
+position: fixed;
+visibility: hidden;
+right: 1rem;
+bottom: 1rem;
+z-index: 20;
+@include flexjc;
+}
+
+/*loader de la page d'accueil*/
+#loader {
+position: absolute;
+width: 100vw;
+height: 100vh;
+background-color: white;
+opacity:0.9;
+z-index: 10;
+}
+
+/*Header*/
+#header {
+z-index: 3;
+}
+
+#notification {
+right: -0.7rem;
+}
+
+#header a:hover + .carthover{
+display: block;
+}
+
+/*liste*/
+section {
+padding: 7rem 0;
+overflow: hidden;
+}
+#list {
+height: 100%;
+overflow: scroll;
+}
+
+.list-box img {
+aspect-ratio: 3 / 2;
+}
+
+.list .list-box p {
+width: 100%;
+line-height: 1.5rem;
+margin-bottom: 0;
+}
+
+.list .list-box:hover {
+transition: 0.3s ease-out;
+box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.12);
+}
+.fadeIn{
+    animation: fadeIn 0.8s ease-in-out both;
+}
+
+/*Footer*/
+#footer {
+width: 100%;
+position: fixed;
+bottom: 0;
+}
+
+.ok {
+display: block;
+@include ptr;
+color: $valid-color;
+}
+
+.notOk {
+@include ptr;
+color: $invalid-color;
+animation: shake 0.8s ease-in-out both;
+
+}
+
+.invalidname,.invalidname:focus {
+border: 1px solid $invalid-color!important;
+animation: shake 0.8s ease-in-out both;
+}
+
+.validname,.validname:focus {
+border: 1px solid $valid-color !important;
+}
+
+.popadd{
+    border: 1px solid $invalid-color!important;
+}

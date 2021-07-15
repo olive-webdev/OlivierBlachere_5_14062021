@@ -13,7 +13,8 @@ let articles = [];
 
 // affiche la ligne de l'article dans le tableau
 
-for (a = 0; a < nombreDeDArticle; a++) {
+function addArticleInTable(){
+    for (a = 0; a < nombreDeDArticle; a++) {
     article = localStorage.key(a);
     detailArticle = (localStorage.getItem(article)).split(',');
     nom = (detailArticle[0]);
@@ -45,7 +46,8 @@ for (a = 0; a < nombreDeDArticle; a++) {
     </td>
     </tr>`
     document.querySelector("#table" + a).innerHTML = line;
-}
+}}
+addArticleInTable();
 
 // affiche le ligne footer du tableau avec le total
 
@@ -91,13 +93,16 @@ function deleteItem(id) {
 let formIsValid = false;
 
 // efface le formaulaire si la panier est vide
-
-if(nombreDeDArticle === 0){
-    console.log('zero article');
-    var d = document.getElementById("cameraContainer");
-    var d_nested = document.getElementById("validationForm");
-    var throwawayNode = d.removeChild(d_nested);
+function hideFormIfCartEmpty(){
+    if(nombreDeDArticle === 0){
+        console.log('zero article');
+        var d = document.getElementById("cameraContainer");
+        var d_nested = document.getElementById("validationForm");
+        var throwawayNode = d.removeChild(d_nested);
+    }
 }
+hideFormIfCartEmpty();
+
 
 // valide ou invalide les champs d'inputs du formulaire
 

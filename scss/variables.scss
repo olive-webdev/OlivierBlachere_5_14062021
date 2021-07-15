@@ -1,0 +1,10 @@
+$font-color:hsl(0, 0%, 27%);
+$blue:200;
+$green:120;
+$red:0;
+$input-borders:hsl($blue, 100%, 34%);
+$valid-color:hsl($green, 100%, 34%);
+$invalid-color:hsl($red, 100%, 34%);
+
+/*Pour l'animation nombre de produit total -1 (car début de 0 et non de 1)*/
+$numberOfCamera:4;

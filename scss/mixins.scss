@@ -1,0 +1,10 @@
+@mixin flexjc {
+    display: flex;
+    justify-content: center;
+};
+
+@mixin ptr {
+    position: absolute;
+    top: 2.7rem;
+    right: 1rem;
+}

@@ -1,0 +1,50 @@
+@import "variables";
+
+@keyframes shake {
+0%,
+100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+}
+10%,
+30%,
+50%,
+70% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+}
+20%,
+40%,
+60% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+}
+80% {
+    -webkit-transform: translateX(.8rem);
+            transform: translateX(.8rem);
+}
+90% {
+    -webkit-transform: translateX(-.8rem);
+            transform: translateX(-.8rem);
+}
+}
+
+
+@keyframes fadeIn {
+0% {
+-webkit-transform: translateY(-4rem);
+        transform: translateY(-4rem);
+opacity: 0;
+}
+100% {
+-webkit-transform: translateY(0);
+        transform: translateY(0);
+opacity: 1;
+}
+}
+
+@for $i from 0 through $numberOfCamera {
+#camera#{$i} {
+    animation: fadeIn 0.8s ease-in-out $i*.2s both;
+}
+}
