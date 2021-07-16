@@ -48,7 +48,7 @@ window.addEventListener('load', () => {
                     <h2>${cameras[i].name}</h2>
                     <p class="d-inline-block text-truncate w-100 mb-3">${cameras[i].description}</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="option">
+                        <div>
                             <i class="bi bi-arrow-right-square me-1"></i>
                             ${optionText}
                         </div>
