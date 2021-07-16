@@ -32,7 +32,8 @@ fetch("http://localhost:3000/api/cameras/" + id)
         option = document.getElementById('select');
         option.appendChild(lense);
         lense.setAttribute("id", "option");
-        lense.textContent = (lensesNumber + ' option disponible')
+        lense.textContent = (lensesNumber + ' option disponible');
+        function lenseOption(){
         if (lensesNumber > 1) {
             lense.textContent = (lensesNumber + ' options disponibles')
         }
@@ -42,7 +43,8 @@ fetch("http://localhost:3000/api/cameras/" + id)
             option.appendChild(lense);
             lense.setAttribute("id", "option");
             lense.textContent = (lenses[a])
-        }
+        }}
+        lenseOption();
         prices = document.getElementById("price");
         let price = cameras.price / 100;
         prices.textContent = price.toFixed(2) + "€";
