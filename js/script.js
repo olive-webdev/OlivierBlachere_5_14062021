@@ -9,8 +9,6 @@ function paramUrl (id){
 // Loader de la page d'accueil
 const loader = document.querySelector('#loader');
 window.addEventListener('load', () => {
-
-
     fetch("http://localhost:3000/api/cameras")
     .then (function(res){
         if (res.ok){
@@ -28,55 +26,39 @@ window.addEventListener('load', () => {
     .then(function camerasLoading (cameras){
         for (let i=0; i<cameras.length; ++i){ 
             paramUrl(cameras[i]._id);
-            // objets et fonction qui génère des éléments HTML
-            element = ['div', 'a', 'img', 'h2', 'p', 'span']
-            id = ['cameraContainer', 'camera', 'list-box', 'link', 'card-body' ]
-            function card (element, id){
-                camera = document.createElement(element);
-                element = document.getElementById(id);
-                element.appendChild(camera);
-            }
-            card(element[0], id[0]);
-            camera.setAttribute("class", "col-lg-4 col-md-6 mt-4");
-            camera.setAttribute("id", "camera"+i);
-            card(element[0], id[1]+i);
-            camera.setAttribute("class", "list-box w-100 border p-3 bg-white")
-            camera.setAttribute("id", "list-box"+i);
-            card(element[1], id[2]+i);
-            camera.setAttribute("id", "link"+i);
-            camera.setAttribute("href", detailUrlParameter[i]);
-            card(element[2], id[3]+i);
-            camera.setAttribute("src", cameras[i].imageUrl);
-            camera.setAttribute("class", "w-100 mb-2");
-            camera.setAttribute("alt", "un appareil photo "+cameras[i].name);
-            card(element[3], id[2]+i);
-            camera.textContent = cameras[i].name;
-            card(element[4], id[2]+i);
-            camera.setAttribute("class", "d-inline-block text-truncate w-100 mb-3");
-            camera.textContent = cameras[i].description;
-            card(element[0], id[2]+i);
-            camera.setAttribute("class", "d-flex justify-content-between align-items-center mb-3");
-            camera.setAttribute("id", "card-body"+i);
-            card(element[0], id[4]+i);
-            camera.setAttribute("class", "option");
             const option = cameras[i].lenses;
             const nombreOption = option.length;
-            camera.innerHTML = '<i class="bi bi-arrow-right-square"></i> '  + nombreOption+" option disponible";
+            let optionText = 1;
             if (nombreOption>1){
-                camera.innerHTML = '<i class="bi bi-arrow-right-square"></i> ' +nombreOption+" options disponibles";
+             optionText = nombreOption + " options disponibles";
+            }
+            if (nombreOption==1){
+                optionText = nombreOption + " option disponible";
             }
             if (nombreOption==0){
-                camera.innerHTML = '<i class="bi bi-arrow-right-square"></i> ' +"Pas d'option disponible"
+            optionText = nombreOption + " pas option disponible";
             }
-            card(element[5], id[4]+i);
-            camera.setAttribute("class", "border border-primary p-2 rounded-2");
             let price = cameras[i].price/100;
-            camera.textContent = price.toFixed(2)+'€';
-            card(element[1], id[2]+i);
-            camera.setAttribute("id", "link"+i);
-            camera.setAttribute("class", "btn btn-primary w-100");
-            camera.setAttribute("href", detailUrlParameter[i]);
-            camera.innerHTML = 'Plus de détails <i class="bi bi-plus-square"></i>';
+            const productCard = `
+            <div class="col-lg-4 col-md-6 mt-4" id="camera${i}">
+                <div class="list-box w-100 border p-3 bg-white" id="list-box">
+                    <a href="${detailUrlParameter[i]}">
+                        <img src="${cameras[i].imageUrl}" class="w-100 mb-2" alt="un appareil photo ${cameras[i].name}">
+                    </a>
+                    <h2>${cameras[i].name}</h2>
+                    <p class="d-inline-block text-truncate w-100 mb-3">${cameras[i].description}</p>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="option">
+                            <i class="bi bi-arrow-right-square me-1"></i>
+                            ${optionText}
+                        </div>
+                        <span class="border border-primary p-2 rounded-2">${price.toFixed(2)+'€'}</span>
+                    </div>
+                    <a href="${detailUrlParameter[i]}" class="btn btn-primary w-100">Plus de details<i class="ms-2 bi bi-plus-square"></i></a>
+                </div>
+            </div>`
+            element = document.getElementById('cameraContainer');
+            element.insertAdjacentHTML('beforeend', productCard)
         }
         loader.className += ' none'
     })
